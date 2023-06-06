@@ -1,13 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DashboardPage from './pages/dashboard';
+import WelcomePage from './pages/welcome';
+import SignInPage from './pages/signin';
+import SignUpPage from './pages/signup';
+import Layout from './Layout';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-700">
-        Hello world!
-      </h1>
+    <div className="App bg-slate-100">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<WelcomePage />} />
+            <Route path="signin" element={<SignInPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route path="dashboard" element={<DashboardPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
